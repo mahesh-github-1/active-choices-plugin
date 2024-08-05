@@ -209,6 +209,37 @@
             </plugin>
             -->
             <plugin>
+            <groupId>com.github.eirslett</groupId>
+            <artifactId>frontend-maven-plugin</artifactId>
+            <version>1.15.0</version>
+            <configuration>
+                    <yarnInheritsProxyConfigFromMaven>false</yarnInheritsProxyConfigFromMaven>
+            </configuration>
+            <executions>
+                <execution>
+                    <id>install node and yarn</id>
+                    <goals>
+                        <goal>install-node-and-yarn</goal>
+                    </goals>
+                    <configuration>
+                        <nodeVersion>v18.18.0</nodeVersion>
+                        <yarnVersion>v1.22.10</yarnVersion>
+                    </configuration>
+             </execution>
+             <execution>
+                <id>yarn mvnbuild</id>
+                <goals>
+                <goal>yarn</goal>
+            </goals>
+            <configuration>
+                <!-- other configurations -->
+                <arguments>run mvnbuild</arguments>
+                <!-- additional configurations -->
+            </configuration>
+        </execution>
+        </executions>
+        </plugin>
+            <plugin>
                 <groupId>org.jenkins-ci.tools</groupId>
                 <artifactId>maven-hpi-plugin</artifactId>
                 <extensions>true</extensions>
